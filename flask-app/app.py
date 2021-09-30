@@ -1,11 +1,12 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
 
 # Replace [PASSWORD] with the root password for your mysql container
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:[PASSWORD]@mysql:3306/flask-db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://admin:Password1@aws-challenge-db.cgpultqwywrq.eu-west-1.rds.amazonaws.com:3306/trio_task_db'
 
 class Users(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
