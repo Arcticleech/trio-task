@@ -69,4 +69,5 @@ To make our architecture more efficient, secure and faster deployed. We have the
 * YAML file for repeatability and reusability.
 
 I have started the implementation of my YAML file using the Cloudformation template designer. This will help with the reusability through use of a premade template, that will lower potential for user error and speed up the process of designing the architecture.<br>
+https://github.com/Arcticleech/trio-task/blob/dev/aws_challenge.yaml
 ![cloudformation](https://github.com/Arcticleech/trio-task/blob/dev/resources/cloudformation.png)
