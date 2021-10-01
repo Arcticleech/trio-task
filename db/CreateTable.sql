@@ -1,3 +1,4 @@
+USE trio_task_db
 CREATE TABLE IF NOT EXISTS users
              (
                           id         INTEGER NOT NULL AUTO_INCREMENT,
