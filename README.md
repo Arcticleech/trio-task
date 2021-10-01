@@ -15,7 +15,7 @@ The AWS architecture would allow access to the public subnet from the web, but a
 ## VPC
 
 The VPC will act as the virtual network which i have defined to contain all elements of my architecture.<br>
-![vpc(https://github.com/Arcticleech/trio-task/blob/dev/resources/VPC.PNG)]<br>
+![vpc](https://github.com/Arcticleech/trio-task/blob/dev/resources/VPC.PNG)<br>
 This will have the CIDR Block ip with a range of /16 to give allowance to a large quantity of avaliable ip addresses within.
 
 ## Subnets
@@ -23,38 +23,38 @@ This will have the CIDR Block ip with a range of /16 to give allowance to a larg
 The VPC will contain 2 subnets that act as seperate IPs and containing the 2 instances on seperate security groups. <br>
 One will act as the public front to the application holding my EC2 Instance, whilst the other will be private, containing the RDS database. The IP range on these subnets at the private being seperate to public needs its own range within /16.
 Public being 10.0.1.0/24 and private being 10.0.2.0/24<br>
-![subnets(https://github.com/Arcticleech/trio-task/blob/dev/resources/subnets.PNG)]
+![subnets](https://github.com/Arcticleech/trio-task/blob/dev/resources/subnets.PNG)
 
 ## Security Groups
 
 Within each subnet will be a security group which will act as a firewall to allow and disallow access.<br> 
-[sg(https://github.com/Arcticleech/trio-task/blob/dev/resources/sg.png)]<br>
+![sg](https://github.com/Arcticleech/trio-task/blob/dev/resources/sg.png)<br>
 The private subnet will contain only access to the public subnet, so it is set as a port access on 3306 (mysql/aurora port) to the ip adress of the public subnet. Therefore the only access to this subnet is via the public subnet.<br>
-![privsg(https://github.com/Arcticleech/trio-task/blob/dev/resources/privsg.png)]<br>
+![privsg](https://github.com/Arcticleech/trio-task/blob/dev/resources/privsg.png)<br>
 The public subnet security group will allow access on the outbound to all ports/ip, and the inbout being the access to the specific ports we need. Port 22 for ssh, 80-443 for Internet access and port 5000 for flask.<br>
-![pubsg(https://github.com/Arcticleech/trio-task/blob/dev/resources/pubsg.png)]
+![pubsg](https://github.com/Arcticleech/trio-task/blob/dev/resources/pubsg.png)
 
 ## Internet Gateway
 
 The internet gateway will allow access from my VPC and the resources within to the open web.<br>
-![igw(https://github.com/Arcticleech/trio-task/blob/dev/resources/igw.png)]
+![igw](https://github.com/Arcticleech/trio-task/blob/dev/resources/igw.png)
 
 ## EC2 Instance
 
 The EC2 Instance was then made attached to the VPC and Public Subnet and then assigned to the Public Security Group, for access to our flask app on the web.<br>
-![EC2(https://github.com/Arcticleech/trio-task/blob/dev/resources/ec2.PNG)]
+![EC2](https://github.com/Arcticleech/trio-task/blob/dev/resources/ec2.PNG)
 
 ## RDS Database
 
 The RDS instance was set up to collect the data made by the flask application within the tables created. Ready for use on the flask app front end.This being made within our VPC and Private Subnet, with the Private Security Group assigned. This was made on two avaliablility zones, for optimal avaliability.<br>
-![RDS(https://github.com/Arcticleech/trio-task/blob/dev/resources/RDS.PNG)]
+![RDS](https://github.com/Arcticleech/trio-task/blob/dev/resources/RDS.PNG)
 
 ## Flask App within Ubuntu
 
 Following all of the above, then we had to access our EC2 Instances via SSH to clone down the resources for the Flask Application, then connecting this app to the RDS database via URI env.<br>
-![ssh(https://github.com/Arcticleech/trio-task/blob/dev/resources/ssh.PNG)]<br>
+![ssh](https://github.com/Arcticleech/trio-task/blob/dev/resources/ssh.PNG)<br>
 Then access to the flask app via public IP on EC2 would show the data stored in the RDS on our front end.<br>
-![EC2flapp(https://github.com/Arcticleech/trio-task/blob/dev/resources/flapp.PNG)]
+![EC2flapp](https://github.com/Arcticleech/trio-task/blob/dev/resources/flapp.PNG)
 
 # Stretch goals
 
@@ -66,4 +66,4 @@ To make our architecture more efficient, secure and faster deployed. We have the
 * YAML file for repeatability and reusability.
 
 I have started the implementation of my YAML file using the Cloudformation template designer. This will help with the reusability through use of a premade template, that will lower potential for user error and speed up the process of designing the architecture.<br>
-![cloudformation(https://github.com/Arcticleech/trio-task/blob/dev/resources/cloudformation.png)]
+![cloudformation](https://github.com/Arcticleech/trio-task/blob/dev/resources/cloudformation.png)
