@@ -10,7 +10,10 @@ In this AWS Challenge, our task was to set up a flask application running throug
 * EC2 Instance
 * RDS Database
 
-The AWS architecture would allow access to the public subnet from the web, but access to the database would only be allowed via the public subnet. In this case for security the subnets where set up with their own security groups to allow traffic only from the selected locations and ports.
+The AWS architecture would allow access to the public subnet from the web, but access to the database would only be allowed via the public subnet. In this case for security the subnets where set up with their own security groups to allow traffic only from the selected locations and ports.<br>
+
+I used a trello board to keep track of the criteria for this project.
+https://trello.com/b/aaae1inZ/aws-trio-task
 
 ## VPC
 
